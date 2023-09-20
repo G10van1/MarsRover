@@ -10,7 +10,7 @@ namespace MarsRover
             Console.WriteLine(rover.Execute("MMMMMMMMMM"));
             Console.WriteLine(rover.Execute("RMLM"));
             Console.WriteLine(rover.Execute("MMMMMMMMM"));
-            Console.WriteLine(rover.Execute("RMLM"));
+            Console.WriteLine(rover.Execute("RMMMMMLMMMMM"));
         }
     }
 }
