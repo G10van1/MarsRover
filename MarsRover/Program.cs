@@ -2,8 +2,7 @@
 namespace MarsRover
 {
     internal class Program
-    {
-        
+    {        
         static void Main(string[] args)
         {
             Rover rover = new Rover();
@@ -60,6 +59,7 @@ public class Rover: IRover
 
             position = xPosition + ":" + yPosition + ":" + directions[direction];            
         }
+
         return position;
     }
 }
