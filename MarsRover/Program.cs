@@ -24,6 +24,12 @@ public class Rover: IRover
     int yPosition;
     int direction;
     char[] directions = { 'N', 'E', 'S', 'W' };
+    const int START_POSITION = 0;
+    const int MAX_POSITION = 9;
+    const int NORTH_INDEX = 0;
+    const int EAST_INDEX = 1;
+    const int SOUTH_INDEX = 2;
+    const int WEST_INDEX = 3;
 
     public Rover()
     {
@@ -32,9 +38,9 @@ public class Rover: IRover
 
     private void Reset()
     {
-        xPosition = 0;
-        yPosition = 0;
-        direction = 0;
+        xPosition = START_POSITION;
+        yPosition = START_POSITION;
+        direction = NORTH_INDEX;
     }
     public string Execute(string command)
     {        
@@ -43,18 +49,18 @@ public class Rover: IRover
         foreach (char c in command) {
 
             if (c == 'R')
-                direction = direction == 3 ? 0 : ++direction;
+                direction = direction == WEST_INDEX ? NORTH_INDEX : ++direction;
 
             if (c == 'L')
-                direction = direction == 0 ? 3 : --direction;
+                direction = direction == NORTH_INDEX ? WEST_INDEX : --direction;
 
             if (c == 'M')
             {
-                xPosition += direction == 1 ? 1 : direction == 3 ? -1 : 0;
-                yPosition += direction == 0 ? 1 : direction == 2 ? -1 : 0;
+                xPosition += direction == EAST_INDEX ? 1 : direction == WEST_INDEX ? -1 : 0;
+                yPosition += direction == NORTH_INDEX ? 1 : direction == SOUTH_INDEX ? -1 : 0;
             }
 
-            if (xPosition >= 10 || xPosition < 0 || yPosition >= 10 || yPosition < 0)
+            if (xPosition > MAX_POSITION || xPosition < START_POSITION || yPosition > MAX_POSITION || yPosition < START_POSITION)
                 Reset();
 
             position = xPosition + ":" + yPosition + ":" + directions[direction];            
