@@ -18,6 +18,7 @@ public interface IRover
 {
     public string Execute(string command);
 }
+
 public class Rover: IRover
 {
     int xPosition;
@@ -42,10 +43,9 @@ public class Rover: IRover
         yPosition = START_POSITION;
         direction = NORTH_INDEX;
     }
+
     public string Execute(string command)
     {        
-        string position = "";
-
         foreach (char c in command) {
 
             if (c == 'R')
@@ -61,11 +61,9 @@ public class Rover: IRover
             }
 
             if (xPosition > MAX_POSITION || xPosition < START_POSITION || yPosition > MAX_POSITION || yPosition < START_POSITION)
-                Reset();
-
-            position = xPosition + ":" + yPosition + ":" + directions[direction];            
+                Reset();                        
         }
 
-        return position;
+        return xPosition + ":" + yPosition + ":" + directions[direction];
     }
 }
